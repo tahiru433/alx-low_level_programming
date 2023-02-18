@@ -1,54 +1,35 @@
-#include <string.h>
-#include <stdio.h>
+#include "main.h"
 
 /**
- * _strspn - get the length of prefix substring
+ * *_strspn - gets the length of a prefix substring
+ * @s: string to evaluate
+ * @accept: string containing the list of characters to match in s
  *
- * @s: string to be searched
- * @accept: string to be matched
- *
- * Return: number of non-repetitive matched found
+ * Return: the number of bytes in the initial segment
+ * of s which consist only of bytes from accept
  */
-
 unsigned int _strspn(char *s, char *accept)
 {
-	/* temporary result var till I find why the checker returns errors */
-	int result;
+	int i, j, f, flag;
 
-	int i, j;
-	int match;
-	int count;
-	int s_len = strlen(s);
-	int accept_len = strlen(accept);
+	f = 0;
 
-	i = 0;
-	count = 0;
-
-	while (i <= accept_len)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		j = 0;
-
-		while (j <= s_len)
+		flag = 0;
+		for (j = 0; accept[j] != '\0'; j++)
 		{
-			if (accept[i] == s[j])
+			if (s[i] == accept[j])
 			{
-				match = 1;
-				break;
+				f++;
+				flag = 1;
 			}
-
-			j++;
 		}
-
-		if (match == 1)
-			count += 1;
-
-		match = 0;
-
-		i++;
+		if (flag == 0)
+		{
+			return (f);
+		}
 	}
 
-	/* quick fix till I figure out why the checker returns errors */
-	result = strspn(s, accept);
-
-	return (result);
+	return (0);
 }

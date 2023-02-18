@@ -1,1 +1,1 @@
-This directory holds the solutions to the tasks of the bit manipulation project
+0x14. C - Bit manipulation

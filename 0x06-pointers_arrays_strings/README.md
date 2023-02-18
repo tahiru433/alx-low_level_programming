@@ -1,1 +1,1 @@
-This is the readme file for this project
+C - More pointers, arrays and strings Project

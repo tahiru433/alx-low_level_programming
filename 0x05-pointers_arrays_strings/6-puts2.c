@@ -1,32 +1,25 @@
-#include <stdio.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * puts2 - print half the value of an array
- * @str: array to be considered
+ * puts2 - prints one char out of 2 of a string
+ * followed by a new line
+ * @str: string to print the chars from
  */
 void puts2(char *str)
 {
-	int stringLength;
-	int counter;
-	int index;
-	char output[1000];
+	int len, i;
 
-	stringLength = strlen(str);
-	index = 0;
+	len = 0;
 
-	if (stringLength > 0)
+	while (str[len] != '\0')
 	{
-		for (counter = 0; counter <= stringLength / 2; counter++)
-		{
-			output[counter] = *(str + index);
-			index += 2;
-		}
+		len++;
+	}
 
-		puts(output);
-	}
-	else
+	for (i = 0; i < len; i += 2)
 	{
-		puts("\0");
+		_putchar(str[i]);
 	}
+
+	_putchar('\n');
 }

@@ -1,1 +1,1 @@
-This is my directory for project 6 on c
+C - Pointers, arrays and strings

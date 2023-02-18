@@ -1,1 +1,1 @@
-This is the directory for my eight project on c
+0x07. C - Even more pointers, arrays and strings

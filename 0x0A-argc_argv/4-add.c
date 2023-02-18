@@ -1,49 +1,85 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
 
 /**
- * main - entry point; multiply given numbers
+ * _atoi - converts a string to an integer
+ * @s: string to be converted
  *
- * @argc: argument count
- * @argv: argument vector
- *
- * Return: 0
+ * Return: the int converted from the string
  */
-
-int main(int argc, char *argv[])
+int _atoi(char *s)
 {
-	int i, j, result, zero;
+	int i, d, n, len, f, digit;
 
-	result = 0;
+	i = 0;
+	d = 0;
+	n = 0;
+	len = 0;
+	f = 0;
+	digit = 0;
 
-	/* check if only one argument (function name) is passed*/
-	if (argc == 1)
+	while (s[len] != '\0')
+		len++;
+
+	while (i < len && f == 0)
 	{
-		printf("0\n");
-		return (0);
+		if (s[i] == '-')
+			++d;
+
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+			f = 0;
+		}
+		i++;
 	}
 
-	/* iterate over argc and print result or return error if char is found*/
+	if (f == 0)
+		return (0);
+
+	return (n);
+}
+
+/**
+ * main - adds two positive number
+ * @argc: number of arguments
+ * @argv: array of arguents
+ *
+ * Return: 0 (Success), or 1 (Success)
+ */
+int main(int argc, char *argv[])
+{
+	int sum, num, i, j, k;
+
+	sum = 0;
+
 	for (i = 1; i < argc; i++)
 	{
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
+			if (argv[i][j] > '9' || argv[i][j] < '0')
 			{
-				printf("Error\n");
+				puts("Error");
 				return (1);
 			}
-
-			if (*argv[i] == '0')
-				zero = 1;
 		}
-
-		result += atoi(argv[i]);
 	}
-	if (result > 0)
-		printf("%d\n", result);
-	if (zero == 1 && result <= 0)
-		printf("%d\n", 0);
 
+	for (k = 1; k < argc; k++)
+	{
+		num = _atoi(argv[k]);
+		if (num >= 0)
+		{
+			sum += num;
+		}
+	}
+
+	printf("%d\n", sum);
 	return (0);
 }

@@ -1,2 +1,1 @@
-# alx-low_level_programming
-This is a special readme
+This project is about the basics of C programming

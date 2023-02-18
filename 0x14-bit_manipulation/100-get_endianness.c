@@ -1,25 +1,17 @@
-/**
- * get_endianness - check the endian-ness of the system
- *
- *                  check if the system is Big Endian
- *                  i.e. stores MSB (most significant byte) first
- *
- *                  or if the system is Little Endian
- *                  i.e. stores LSB (least significant byte) first
- *
- * Return: 0 if big endian, 1 if little endian
- */
+#include "main.h"
 
+/**
+ * get_endianness - check endianness
+ * Return: 0 if big endian, or 1 if little endian
+ */
 int get_endianness(void)
 {
-	char *byte_val;
-	unsigned int endian;
+	int num;
 
-	endian = 1;
-	byte_val = (char *) &endian;
-
-	if (byte_val)
+	num = 1;
+	if (*(char *)&num == 1)
 		return (1);
 	else
 		return (0);
 }
+

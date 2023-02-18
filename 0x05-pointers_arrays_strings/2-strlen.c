@@ -1,15 +1,21 @@
-#include <string.h>
+#include "main.h"
 
 /**
- * _strlen - find the length of provided string
- * @s: string to be  parsed
- * Return: return the string length
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
  */
 int _strlen(char *s)
 {
-	int length;
+	int i;
 
-	length = strlen(s);
+	i = 0;
 
-	return (length);
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+
+	return (i);
 }

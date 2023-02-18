@@ -1,28 +1,34 @@
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * *create_array - dynamically allocate memory and create an array
+ * *create_array - creates an array of chars,
+ * and initializes it with a specific char
+ * @size: size of the array to create
+ * @c: char to initialize the array c
  *
- * @size: size of array
- * @c: character
- *
- * Return: pointer to character or null if malloc fails
+ * Return: pointer to the array (Success), NULL (Error)
  */
-
 char *create_array(unsigned int size, char c)
 {
-	unsigned int i;
-	char *arr;
+	char *p;
+	unsigned int i = 0;
 
-	arr = malloc(size * sizeof(char));
-
-	if (size == 0 || arr == NULL)
+	if (size == 0)
 		return (NULL);
 
-	for (i = 0; i < size; i++)
-		arr[i] = c;
+	p = (char *) malloc(sizeof(char) * size);
 
-	arr[i] = '\0';
+	if (p == NULL)
+		return (0);
 
-	return (arr);
+	while (i < size)
+	{
+		*(p + i) = c;
+		i++;
+	}
+
+	*(p + i) = '\0';
+
+	return (p);
 }
